@@ -33,15 +33,18 @@ const cameraList = rover => {
     }
   }
 
-export default function SelectFilter({filter,setFilter}) {
+export default function SelectFilter({filter, setFilter, setPage, setPhotos}) {
     const classes = useStyles();
     const handleChange = (event) => {
         const name = event.target.name;
-        setFilter({...filter, ...{[name]: event.target.value, page: '1'},
-        });
-        console.log(filter)
-      };
-
+        setFilter({...filter,...{ [
+                        name]: event.target.value, 
+                        page: 1, }
+                    });
+        setPage(1)
+        setPhotos([])
+           }
+        // console.log(filter)
     return (
         <>
         <Container  className={classes.container}>
