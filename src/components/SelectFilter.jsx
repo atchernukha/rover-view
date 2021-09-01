@@ -1,10 +1,18 @@
 import React from 'react'
-import { Container, Select, makeStyles, TextField } from '@material-ui/core'
+import { Container, Select, makeStyles, TextField, withStyles, Slider } from '@material-ui/core'
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import { lightGreen as green } from '@material-ui/core/colors';
 
-const useStyles =makeStyles(theme => ({
+
+const useStyles = makeStyles(theme => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
+        color: green[600],
       },
       textField: {
         marginLeft: theme.spacing(1),
@@ -12,6 +20,18 @@ const useStyles =makeStyles(theme => ({
         width: 200,
       },
 }))
+
+const GreenRadio = withStyles({
+  root: {
+    color: green[300],
+    '&$checked': {
+      color: green[500],
+    },
+  },
+  checked: {},
+})((props) => <Radio color="default" {...props} />);
+// export default function RadioButtonsGroup() {
+//   const [value, setValue] = React.useState('female');
 
 const cameraList = rover => {
     switch (rover) {
@@ -34,7 +54,33 @@ const cameraList = rover => {
   }
 
 export default function SelectFilter({filter, setFilter, setPage, setPhotos}) {
+
     const classes = useStyles();
+    const marks = [
+      {
+        value: 0,
+        label: '0',
+      },
+      {
+        value: 250,
+        label: '250',
+      },
+      {
+        value: 500,
+        label: '500',
+      },
+      {
+        value: 750,
+        label: '750',
+      },
+      {
+        value: 1000,
+        label: '1000',
+      },
+    ];
+    
+    const valuetext = value => `${value}`
+
     const handleChange = (event) => {
         const name = event.target.name;
         setFilter({...filter,...{ [
@@ -44,41 +90,33 @@ export default function SelectFilter({filter, setFilter, setPage, setPhotos}) {
         setPage(1)
         setPhotos([])
            }
-        // console.log(filter)
+
     return (
         <>
         <Container  className={classes.container}>
-        <Select
-          native
-          className={classes.textField}
-          value={filter.rover}
-          onChange={handleChange}
-          inputProps={{
-            name: 'rover',
-            id: 'rover',
-          }}
-        >
-          <option value={'curiosity'}>Curiosity</option>
-          <option value={'opportunity'}>Opportunity</option>
-          <option value={'spirit'}>Spirit</option>
-        </Select>
- 
-        <Select
-          native
-        //   className={classes.textField}
-          value={filter.camera}
-          onChange={handleChange}
-          inputProps={{
-            name: 'camera',
-            id: 'camera',
-          }}
-        >
-            {/* <option aria-label="None" value="" /> */}
-            <option value="all">{"All cameras"}</option>
-            {cameraList(filter.rover).map(item => <option key={item.name} value={item.name}>{item.fullName}</option>)}
-        </Select>
-
-        <TextField
+  <FormControl component="fieldset">
+  <FormLabel component="legend">Rover</FormLabel>
+  <RadioGroup aria-label="Rover" name="rover" value={filter.rover} onChange={handleChange} row>
+    <FormControlLabel value='curiosity' control={<GreenRadio />} label="Curiosity" />
+    <FormControlLabel value='opportunity' control={<GreenRadio />} label="Opportunity" />
+    <FormControlLabel value='spirit' control={<GreenRadio />} label="Spirit" />
+  </RadioGroup>
+</FormControl>
+<FormControl component="fieldset">
+  <FormLabel component="legend">Camera</FormLabel>
+  <RadioGroup aria-label="Camera" name='camera' value={filter.camera} onChange={handleChange} row>
+  {cameraList(filter.rover).map(item => <FormControlLabel key={item.name} value={item.name} control={<GreenRadio />} label={item.fullName} />)}
+  </RadioGroup>
+</FormControl>
+<FormControl component="fieldset">
+  <FormLabel component="legend">Day</FormLabel>
+  <RadioGroup aria-label="Date" name="earth" value={filter.earth} onChange={handleChange} row>
+    <FormControlLabel value="true" control={<GreenRadio />} label="Earth date" />
+    <FormControlLabel value="" control={<GreenRadio />} label="Martian sol" />
+  </RadioGroup>
+</FormControl>
+        {filter.earth?
+            <TextField
             id="date"
             label="Earth date"
             name="earth_date"
@@ -88,21 +126,22 @@ export default function SelectFilter({filter, setFilter, setPage, setPhotos}) {
             className={classes.textField}
             InputLabelProps={{
                 shrink: true,
-            }}/>
-            
-            {/* <Select
-            name="rover"
-            label="select rover*"
-            // isRequired={true}
-            options={[{value: 'curiosity',label: 'Curiosity'}, {value: 'opportunity',label: 'Opportunity'}, {value: 'spirit',label: 'Spirit'} ]}
-            width={320}
-            // onInputClick={() => this.handleInputClick(0)}
-            // onButtonClick={() => this.handleButtonClick(0)}
-            // displayInstructions={instructions[0].display}
-            // visited={instructions[0].visited}
-            instructions="Instructions: Here are some instructions for the first - select a program from the drop-down list."
-          /> */}
-        </Container>
+            }}/>:
+            <Slider
+                    min={0}
+                    max={1000}
+                    // value={filter.sol}
+                    name="sol"
+                    defaultValue={filter.sol}
+                    getAriaValueText={valuetext}
+                    step={1}
+                    marks={marks}
+                    valueLabelDisplay="on"
+                    onChange={handleChange}
+                  />
+
+            }
+         </Container>
         </>
     )
 }
