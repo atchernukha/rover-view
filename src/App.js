@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import axios from "axios"
 import  { Button, Container, Typography, makeStyles }  from '@material-ui/core'
 import { lightGreen as green } from '@material-ui/core/colors';
-// import  MenuIcon  from '@material-ui/icons/Menu'
 import SelectFilter from './components/SelectFilter';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(3, 0, 2),
+    textAlign: 'center',
+    backgroundColor: green,
   }
 }))
 
@@ -15,7 +16,7 @@ function App() {
   const styles =useStyles()
   const ItemsPerPage =25
   const [filter, setFilter] = useState({
-    rover: 'curiosity',
+    rover: 'spirit',
     camera: 'FHAZ',
     earth: 'true',
     earth_date: '2004-01-05',
@@ -52,7 +53,7 @@ function App() {
   }, [filter, page]);
 
   return (
-      <div className="App">
+      <div className={styles.root}>
         <Container>
         <SelectFilter filter={filter} setFilter={setFilter} setPage={setPage} setPhotos={setPhotos}/>
  

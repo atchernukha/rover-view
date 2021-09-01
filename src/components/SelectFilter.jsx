@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Select, makeStyles, TextField, withStyles, Slider } from '@material-ui/core'
+import { Container, makeStyles, TextField, withStyles, Slider } from '@material-ui/core'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -30,8 +30,6 @@ const GreenRadio = withStyles({
   },
   checked: {},
 })((props) => <Radio color="default" {...props} />);
-// export default function RadioButtonsGroup() {
-//   const [value, setValue] = React.useState('female');
 
 const cameraList = rover => {
     switch (rover) {
@@ -115,6 +113,7 @@ export default function SelectFilter({filter, setFilter, setPage, setPhotos}) {
     <FormControlLabel value="" control={<GreenRadio />} label="Martian sol" />
   </RadioGroup>
 </FormControl>
+<FormControl component="fieldset">
         {filter.earth?
             <TextField
             id="date"
@@ -127,20 +126,20 @@ export default function SelectFilter({filter, setFilter, setPage, setPhotos}) {
             InputLabelProps={{
                 shrink: true,
             }}/>:
-            <Slider
-                    min={0}
-                    max={1000}
-                    // value={filter.sol}
-                    name="sol"
-                    defaultValue={filter.sol}
-                    getAriaValueText={valuetext}
-                    step={1}
-                    marks={marks}
-                    valueLabelDisplay="on"
-                    onChange={handleChange}
-                  />
-
+            <Slider style= {{marginTop: 30, width: 720,}}
+              min={0}
+              max={1000}
+              // value={filter.sol}
+              name="sol"
+              defaultValue={filter.sol}
+              getAriaValueText={valuetext}
+              step={1}
+              marks={marks}
+              valueLabelDisplay="on"
+              onChangeCommitted={handleChange}
+            />
             }
+</FormControl>
          </Container>
         </>
     )
