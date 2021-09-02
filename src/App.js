@@ -8,8 +8,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(3, 0, 2),
     textAlign: 'center',
-    backgroundColor: green,
-  }
+  },button: {
+    color: green[500],
+    marginBottom: 60,
+  },
 }))
 
 function App() {
@@ -61,7 +63,7 @@ function App() {
         
 
          </Container>
-         { fetching && <Button onClick={() => setPage(p => ++p)}>Load more...</Button>}
+         { fetching && <Button className={styles.button} onClick={() => setPage(p => ++p)}>Load more...</Button>}
       </div>
    );
 }
