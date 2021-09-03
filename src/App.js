@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from "axios"
-import  { Button, Container, Typography, makeStyles }  from '@material-ui/core'
-import { lightGreen as green } from '@material-ui/core/colors';
-import SelectFilter from './components/SelectFilter';
+import  {Container, makeStyles }  from '@material-ui/core'
+import SelectFilter, { GreenButton } from './components/SelectFilter';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(3, 0, 2),
     textAlign: 'center',
-  },button: {
-    color: green[500],
-    marginBottom: 60,
   },
 }))
 
@@ -19,7 +15,7 @@ function App() {
   const ItemsPerPage =25
   const [filter, setFilter] = useState({
     rover: 'spirit',
-    camera: 'FHAZ',
+    camera: 'NAVCAM',
     earth: 'true',
     earth_date: '2004-01-05',
     sol: 1,
@@ -56,14 +52,14 @@ function App() {
 
   return (
       <div className={styles.root}>
-        <Container>
+         <Container>
         <SelectFilter filter={filter} setFilter={setFilter} setPage={setPage} setPhotos={setPhotos}/>
  
         {photos && photos.map(item => <img key={item.id} src={item.img_src} alt={""} width="800" height="auto" />)}
         
 
          </Container>
-         { fetching && <Button className={styles.button} onClick={() => setPage(p => ++p)}>Load more...</Button>}
+         { fetching && <GreenButton onClick={() => setPage(p => ++p)}>Load more...</GreenButton>}
       </div>
    );
 }
