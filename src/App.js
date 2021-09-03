@@ -43,7 +43,6 @@ function App() {
         } else {
            setFetching(false)
           }
-      console.log(resp.data.photos.length)
     })
     .catch(function (error) {
       console.log(error);

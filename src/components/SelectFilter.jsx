@@ -92,7 +92,16 @@ export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) 
       ...filter, ...{
         [
           name]: event.target.value,
-        page: 1,
+      }
+    });
+    setPage(1)
+    setPhotos([])
+  }
+
+  const setSol = value => {
+    setFilter({
+      ...filter, ...{
+        sol: value,
       }
     });
     setPage(1)
@@ -137,17 +146,7 @@ export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) 
                 shrink: true,
               }} /> :
             <div>
-              <GreenButton
-                onClick={() => {
-                  setFilter({
-                    ...filter, ...{
-                      sol: --filter.sol,
-                      page: 1,
-                    }
-                  });
-                  setPage(1)
-                  setPhotos([])
-                }}>-</GreenButton>
+              <GreenButton onClick={() => setSol(--filter.sol)}>-</GreenButton>
               <Slider className={classes.slider}
                 min={0}
                 max={1000}
@@ -157,29 +156,9 @@ export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) 
                 step={1}
                 marks={marks}
                 valueLabelDisplay="on"
-                onChangeCommitted={(event, newValue) => {
-                  setFilter({
-                    ...filter, ...{
-                      sol: newValue,
-                      page: 1,
-                    }
-                  });
-                  setPage(1)
-                  setPhotos([])
-                }}
+                onChangeCommitted={(event, newValue) => setSol(newValue)}
               />
-               <GreenButton
-                onClick={() => {
-                  setFilter({
-                    ...filter, ...{
-                      sol: ++filter.sol,
-                      page: 1,
-                    }
-                  });
-                  setPage(1)
-                  setPhotos([])
-                }}
-              >+</GreenButton>
+              <GreenButton onClick={() => setSol(++filter.sol)}>+</GreenButton>
             </div>
           }
         </FormControl>
