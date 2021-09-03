@@ -19,10 +19,6 @@ const useStyles = makeStyles(theme => ({
     width: 640,
     color: green[300],
   },
-  button: {
-    color: green[500],
-    marginBottom: 60,
-  }
 }))
 
 const GreenRadio = withStyles({
@@ -34,6 +30,13 @@ const GreenRadio = withStyles({
   },
   checked: {},
 })((props) => <Radio color="default" {...props} />);
+
+export const GreenButton = withStyles({
+  root: {
+    color: green[500],
+    marginBottom: 60,
+  }
+})((props) => <Button color="default" {...props} />);
 
 const cameraList = rover => {
   switch (rover) {
@@ -134,7 +137,7 @@ export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) 
                 shrink: true,
               }} /> :
             <div>
-              <Button className={classes.button}
+              <GreenButton
                 onClick={() => {
                   setFilter({
                     ...filter, ...{
@@ -144,13 +147,12 @@ export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) 
                   });
                   setPage(1)
                   setPhotos([])
-                }}>-</Button>
+                }}>-</GreenButton>
               <Slider className={classes.slider}
                 min={0}
                 max={1000}
                 value={filter.sol}
                 name="sol"
-                // defaultValue={filter.sol}
                 getAriaValueText={valuetext}
                 step={1}
                 marks={marks}
@@ -166,7 +168,7 @@ export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) 
                   setPhotos([])
                 }}
               />
-               <Button className={classes.button}
+               <GreenButton
                 onClick={() => {
                   setFilter({
                     ...filter, ...{
@@ -177,7 +179,7 @@ export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) 
                   setPage(1)
                   setPhotos([])
                 }}
-              >+</Button>
+              >+</GreenButton>
             </div>
           }
         </FormControl>
