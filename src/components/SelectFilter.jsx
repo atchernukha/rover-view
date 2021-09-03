@@ -58,7 +58,7 @@ const cameraList = rover => {
   }
 }
 
-export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) {
+export default function SelectFilter({ filter, setFilter, resetSearch }) {
 
   const classes = useStyles();
   const marks = [
@@ -90,12 +90,10 @@ export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) 
     const name = event.target.name;
     setFilter({
       ...filter, ...{
-        [
-          name]: event.target.value,
+        [name]: event.target.value,
       }
     });
-    setPage(1)
-    setPhotos([])
+    resetSearch();
   }
 
   const setSol = value => {
@@ -104,8 +102,7 @@ export default function SelectFilter({ filter, setFilter, setPage, setPhotos }) 
         sol: value,
       }
     });
-    setPage(1)
-    setPhotos([])
+    resetSearch();
   }
 
   return (
