@@ -6,12 +6,14 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { lightGreen as green } from '@material-ui/core/colors';
+import { marks, cameraList } from './const';
 
 
 const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
+      color: green[700],
     },
   },
   slider: {
@@ -23,9 +25,9 @@ const useStyles = makeStyles(theme => ({
 
 const GreenRadio = withStyles({
   root: {
-    color: green[300],
+    color: green[500],
     '&$checked': {
-      color: green[500],
+      color: green[400],
     },
   },
   checked: {},
@@ -38,51 +40,10 @@ export const GreenButton = withStyles({
   }
 })((props) => <Button color="default" {...props} />);
 
-const cameraList = rover => {
-  switch (rover) {
-    case 'curiosity':
-      return [{ name: 'FHAZ', fullName: 'Front Hazard Avoidance Camera' }, { name: 'RHAZ', fullName: 'Rear Hazard Avoidance Camera' },
-      { name: 'NAVCAM', fullName: 'Navigation Camera' }, { name: 'MAST', fullName: 'Mast Camera' },
-      { name: 'CHEMCAM', fullName: 'Chemistry and Camera Complex' }, { name: 'MAHLI', fullName: 'Mars Hand Lens Imager' },
-      { name: 'MARDI', fullName: 'Mars Descent Imager' }];
-    case 'opportunity':
-      return [{ name: 'FHAZ', fullName: 'Front Hazard Avoidance Camera' }, { name: 'RHAZ', fullName: 'Rear Hazard Avoidance Camera' },
-      { name: 'NAVCAM', fullName: 'Navigation Camera' }, { name: 'PANCAM', fullName: 'Panoramic Camera' },
-      { name: 'MINITES', fullName: 'Miniature Thermal Emission Spectrometer (Mini-TES)' }];
-    case 'spirit':
-      return [{ name: 'FHAZ', fullName: 'Front Hazard Avoidance Camera' }, { name: 'RHAZ', fullName: 'Rear Hazard Avoidance Camera' },
-      { name: 'NAVCAM', fullName: 'Navigation Camera' }, { name: 'PANCAM', fullName: 'Panoramic Camera' },
-      { name: 'MINITES', fullName: 'Miniature Thermal Emission Spectrometer (Mini-TES)' }];
-    default:
-      return [];
-  }
-}
-
 export default function SelectFilter({ filter, setFilter, resetSearch }) {
 
   const classes = useStyles();
-  const marks = [
-    {
-      value: 0,
-      label: '0',
-    },
-    {
-      value: 250,
-      label: '250',
-    },
-    {
-      value: 500,
-      label: '500',
-    },
-    {
-      value: 750,
-      label: '750',
-    },
-    {
-      value: 1000,
-      label: '1000',
-    },
-  ];
+  
 
   const valuetext = value => `${value}`
 

@@ -1,22 +1,33 @@
 import { useState, useEffect } from 'react';
-import axios from "axios"
-import { Typography, Container, makeStyles, ImageList, ImageListItem } from '@material-ui/core'
+import axios from "axios";
+import { Typography, Container, makeStyles, ImageList, ImageListItem, Paper } from '@material-ui/core';
+import { lightGreen as green } from '@material-ui/core/colors';
 import SelectFilter, { GreenButton } from './components/SelectFilter';
+import Image from './img/mars.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(3, 0, 2),
-    textAlign: 'center',
-  },
+},
   imageList: {
     maxWidth: 1200,
     height: 'auto',
     // Promote the list into its own layer in Chrome. This cost memory, but helps keep FPS high.
     transform: 'translateZ(0)',
   },
+  paperContainer: {
+    textAlign: 'center',
+    background: `url(${Image})`,
+    backgroundPosition: 'center center',
+    backgroundAttachment: 'fixed',
+    // height: '100vh',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    minHeight: '100vh',
+}
 }))
 
 function App() {
+
   const styles = useStyles()
   const ItemsPerPage = 25
   const [filter, setFilter] = useState({
@@ -59,24 +70,26 @@ function App() {
   }, [filter, page]);
 
   return (
-    <div className={styles.root}>
-      <Container>
+    <Paper className={styles.paperContainer}>
+    {/* <div className={styles.root}>  */}
         <SelectFilter filter={filter} setFilter={setFilter} resetSearch={() => {
           setPage(1);
           setPhotos([]);
         }} />
+        <Container>
         {photos.length ? (<ImageList gap={1} className={styles.imageList} cols={1} rowHeight='auto'>
           {photos.map(item => <ImageListItem key={item.id} >
             <img src={item.img_src} alt={item.id} />
           </ImageListItem>)}
         </ImageList>) :
-          <Typography variant="h5" >
+          <Typography variant="h6" color = {green[500]}>
             Photos not found
           </Typography>
         }
       </Container>
       {fetching && <GreenButton onClick={() => setPage(p => ++p)}>Load more...</GreenButton>}
-    </div>
+     {/* </div>  */}
+    </Paper>
   );
 }
 
