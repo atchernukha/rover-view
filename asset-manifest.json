@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/rover-view/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/rover-view/static/js/main.5b8bcc00.chunk.js",
-    "main.js.map": "/rover-view/static/js/main.5b8bcc00.chunk.js.map",
+    "main.js": "/rover-view/static/js/main.fec6861f.chunk.js",
+    "main.js.map": "/rover-view/static/js/main.fec6861f.chunk.js.map",
     "runtime-main.js": "/rover-view/static/js/runtime-main.e18a47c2.js",
     "runtime-main.js.map": "/rover-view/static/js/runtime-main.e18a47c2.js.map",
-    "static/js/2.582ea4e2.chunk.js": "/rover-view/static/js/2.582ea4e2.chunk.js",
-    "static/js/2.582ea4e2.chunk.js.map": "/rover-view/static/js/2.582ea4e2.chunk.js.map",
+    "static/js/2.caf1ff68.chunk.js": "/rover-view/static/js/2.caf1ff68.chunk.js",
+    "static/js/2.caf1ff68.chunk.js.map": "/rover-view/static/js/2.caf1ff68.chunk.js.map",
     "index.html": "/rover-view/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/rover-view/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.582ea4e2.chunk.js.LICENSE.txt": "/rover-view/static/js/2.582ea4e2.chunk.js.LICENSE.txt"
+    "static/js/2.caf1ff68.chunk.js.LICENSE.txt": "/rover-view/static/js/2.caf1ff68.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e18a47c2.js",
-    "static/js/2.582ea4e2.chunk.js",
+    "static/js/2.caf1ff68.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.5b8bcc00.chunk.js"
+    "static/js/main.fec6861f.chunk.js"
   ]
 }
