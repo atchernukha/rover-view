@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react';
 import axios from "axios"
-import { Container, makeStyles } from '@material-ui/core'
+import { Typography, Container, makeStyles, ImageList, ImageListItem } from '@material-ui/core'
 import SelectFilter, { GreenButton } from './components/SelectFilter';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(3, 0, 2),
     textAlign: 'center',
+  },
+  imageList: {
+    maxWidth: 1200,
+    height: 'auto',
+    // Promote the list into its own layer in Chrome. This cost memory, but helps keep FPS high.
+    transform: 'translateZ(0)',
   },
 }))
 
@@ -48,7 +54,7 @@ function App() {
       }
     })
       .catch(function (error) {
-        console.log(error);
+        console.error(error);
       })
   }, [filter, page]);
 
@@ -59,10 +65,15 @@ function App() {
           setPage(1);
           setPhotos([]);
         }} />
-
-        {photos && photos.map(item => <img key={item.id} src={item.img_src} alt={""} width="800" height="auto" />)}
-
-
+        {photos.length ? (<ImageList gap={1} className={styles.imageList} cols={1} rowHeight='auto'>
+          {photos.map(item => <ImageListItem key={item.id} >
+            <img src={item.img_src} alt={item.id} />
+          </ImageListItem>)}
+        </ImageList>) :
+          <Typography variant="h5" >
+            Photos not found
+          </Typography>
+        }
       </Container>
       {fetching && <GreenButton onClick={() => setPage(p => ++p)}>Load more...</GreenButton>}
     </div>
