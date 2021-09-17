@@ -49,20 +49,12 @@ export default function SelectFilter({ filter, setFilter, resetSearch }) {
 
   const handleChange = event => {
     const name = event.target.name;
-    setFilter({
-      ...filter, ...{
-        [name]: event.target.value,
-      }
-    });
+    setFilter({...filter, [name]: event.target.value });
     resetSearch();
   }
 
   const setSol = value => {
-    setFilter({
-      ...filter, ...{
-        sol: value,
-      }
-    });
+    setFilter({...filter, sol: value });
     resetSearch();
   }
 
