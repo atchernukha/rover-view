@@ -1,13 +1,16 @@
-# Prerequisites
+## Prerequisites
 
-  ------------ ----------------------------------------------------------------------------------------------------------------------------------
-  Technology   For implementing a test task please use the technology agreed in the interview. Otherwise Vue.js, React.js, Angular can be used.
-  Language     Javascript or Typescript
-  Design       [[Material]{.ul} [design]{.ul}](https://material.io/design) (here you can find any of UI components)
-  API          [[https://api.nasa.gov/]{.ul}](https://api.nasa.gov/) scroll down and choose Mars Rover Photos section
-  ------------ ----------------------------------------------------------------------------------------------------------------------------------
+  |            |                                                          |
+  | -----------| ---------------------------------------------------------|
+  |Technology   |For implementing a test task please use the technology agreed in the interview. Otherwise Vue.js, React.js, Angular can be used.
+  |Language     |Javascript or Typescript
+  |Design       |[Material design](https://material.io/design) (here you can find any of UI components)
+  |API          |[https://api.nasa.gov/](https://api.nasa.gov/) scroll down and choose Mars Rover Photos section
+  
 
-Description
+
+
+## Description
 
 We live in a very interesting time when everything is changing
 dramatically soon, and we are one of the first generations for which an
@@ -20,7 +23,7 @@ expeditions to Mars.
 
 The website should provide an ability for the user to select a
 Rover(Curiosity, Opportunity, Spirit), Camera(Front, Rear, ...) and
-Sol(Mars day). After the Rover, Camere and Sol were selected, the
+Sol(Mars day). After the Rover, Camera and Sol were selected, the
 website should show the images were done by the Rover. It might be a big
 number of images for each Sol(Mars day) so the app should have a
 pagination. The pagination should be implemented in a way "Load more..."
@@ -30,21 +33,24 @@ Using material design, please make sure that the website is pretty as
 much as possible as this test task is for the front-end where look and
 feel play a huge role.
 
-Requirements
+## Requirements
 
-  ------------------ --------------
-  Desktop view       Must have
-  Mobile view        Must have
-  Tablet view        Nice to have
-  Pagination         Must have
-  Error handling     Nice to have
-  CSS preprocessor   Nice to have
-  ------------------ --------------
+  |                   |               |
+  | ------------------| --------------|
+  |Desktop view       |Must have
+  |Mobile view        |Must have
+  |Tablet view        |Nice to have
+  |Pagination         |Must have
+  |Error handling     |Nice to have
+  |CSS preprocessor   |Nice to have
+  
 
-Outcome
 
-  --------------------------------- --------------
-  Source code                       Must have
-  Instruction "How to run a code"   Must have
-  Link to a hosted website          Nice to have
-  --------------------------------- --------------
+## Outcome
+
+  |                                  |              |
+  |--------------------------------- |--------------|
+  |Source code                       |Must have
+  |Instruction "How to run a code"   |Must have
+  |Link to a hosted website          |Nice to have
+ 
