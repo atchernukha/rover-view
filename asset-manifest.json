@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/rover-view/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/rover-view/static/js/main.12f6acf0.chunk.js",
-    "main.js.map": "/rover-view/static/js/main.12f6acf0.chunk.js.map",
+    "main.js": "/rover-view/static/js/main.08119ba6.chunk.js",
+    "main.js.map": "/rover-view/static/js/main.08119ba6.chunk.js.map",
     "runtime-main.js": "/rover-view/static/js/runtime-main.e18a47c2.js",
     "runtime-main.js.map": "/rover-view/static/js/runtime-main.e18a47c2.js.map",
     "static/js/2.0970a439.chunk.js": "/rover-view/static/js/2.0970a439.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.e18a47c2.js",
     "static/js/2.0970a439.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.12f6acf0.chunk.js"
+    "static/js/main.08119ba6.chunk.js"
   ]
 }
